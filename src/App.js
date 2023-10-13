@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 function App() {
   return (
     <div className="App">
-      <h1>Income tracker app</h1>
+      
       <nav>
             <ul>
               <li>
@@ -28,6 +28,7 @@ function App() {
               </li>
             </ul>
           </nav>
+          
       <Routes>
         <Route path="/income" element={<Income/>} />
         <Route path="/expenses" element={<Expense/>} />

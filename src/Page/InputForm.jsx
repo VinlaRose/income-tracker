@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addIncome } from "../redux/actions"; // Define action creators for adding data
+import { addExpense, addIncome } from "../redux/actions"; 
+import "../App.css"
 
 function InputForm() {
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState("");
-  const [category, setCategory] = useState("income"); // Default category is "income"
+  const [category, setCategory] = useState("income"); 
 
   const dispatch = useDispatch();
 
@@ -19,49 +20,62 @@ function InputForm() {
 
    
     if (category === "expense") {
-     
+        dispatch(addExpense({ description, amount, category }));
     } else if (category === "savings") {
         
     } else if (category === "income") {
       dispatch(addIncome({ description, amount, category }));
     }
 
-    // Clear the form after submission
+    
     setDescription("");
     setAmount("");
   };
 
   return (
-    <div>
-      <h2>Enter Income Data</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Description:</label>
-          <input
-            type="text"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Amount:</label>
-          <input
-            type="number"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Category:</label>
-          <select value={category} onChange={(e) => setCategory(e.target.value)}>
-            <option value="income">Income</option>
-            <option value="expense">Expense</option>
-            <option value="savings">Savings</option>
-          </select>
-        </div>
-        <button type="submit">Add Entry</button>
-      </form>
+    
+      
+    <form className="input-container" onSubmit={handleSubmit}>
+    <div className="input-row">
+      <div className="input-group">
+        <label>Description:</label>
+        <input
+          className="input-field"
+          type="text"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+      </div>
+      <div className="input-group">
+        <label>Amount:</label>
+        <input
+          className="input-field"
+          type="number"
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
+        />
+      </div>
+      <div className="input-group">
+        <label>Category:</label>
+        <select
+          className="input-field"
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+        >
+          <option value="income">Income</option>
+          <option value="expense">Expense</option>
+          <option value="savings">Savings</option>
+        </select>
+      </div>
+      <div className="input-group">
+        <button type="submit" className="submit-button">
+          Add Entry
+        </button>
+      </div>
     </div>
+  </form>
+  
+    
   );
 }
 

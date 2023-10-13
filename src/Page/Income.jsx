@@ -23,24 +23,25 @@ function Income() {
       <table>
         <thead>
           <tr>
-            <th>ID</th>
+            
             <th>Description</th>
             <th>Amount</th>
             <th>Category</th>
             <th>Created At</th>
-            {/* Add additional headers as needed */}
+            <th>Delete</th>
+           
           </tr>
         </thead>
         <tbody>
           {income.map((item) => (
             <tr key={item._id}>
-              <td>{item._id}</td>
+              
               <td>{item.description}</td>
               <td>{item.amount}</td>
               <td>{item.category}</td>
               <td>{item.createdAt}</td>
               <td><button onClick={() => deleteHandler(item._id)}>DELETE</button></td>
-              {/* Add additional data cells as needed */}
+              
             </tr>
           ))}
         </tbody>

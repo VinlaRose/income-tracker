@@ -61,6 +61,58 @@ const initialState = {
               error: 'Error deleting income',
             };
   
+            
+            
+            
+            
+            
+            case 'FETCH_EXPENSE_SUCCESS':
+                return {
+                  ...state,
+                  expenses: action.payload,
+                  loading: false,
+                  error: null,
+                };
+          
+              case 'FETCH_EXPENSE_FAILURE':
+                return {
+                  ...state,
+                  loading: false,
+                  error: 'Error fetching expenses data',
+                };
+          
+              case 'ADD_EXPENSE_SUCCESS':
+                return {
+                  ...state,
+                  expenses: [...state.expenses, action.payload],
+                  loading: false,
+                  error: null,
+                };
+          
+              case 'ADD_EXPENSE_FAILURE':
+                return {
+                  ...state,
+                  loading: false,
+                  error: 'Error adding expenses',
+                };
+                
+                case 'DELETE_EXPENSE_SUCCESS':
+                    
+                    const updatedExpense = state.expenses.filter((expenses) => expenses._id !== action.payload._id);
+                    return {
+                      ...state,
+                      expenses: updatedExpense,
+                      loading: false,
+                      error: null,
+                    };
+              
+                  case 'DELETE_EXPENSE_FAILURE':
+                    return {
+                      ...state,
+                      loading: false,
+                      error: 'Error deleting expenses',
+                    };
+          
       default:
         return state;
     }
