@@ -91,8 +91,7 @@ export const fetchIncome = () => async (dispatch) => {
 
   export const addExpense = (expenseData) => async (dispatch) => {
     try {
-      // Dispatch a loading action if needed
-      // dispatch({ type: 'ADD_EXPENSE_LOADING' });
+   
       console.log(expenseData)
   
       const response = await fetch('https://expense-tracker.vinlarose.repl.co/expenses', {
@@ -141,6 +140,77 @@ export const fetchIncome = () => async (dispatch) => {
     } catch (error) {
       console.error('Error deleting expense:', error);
       dispatch({ type: 'DELETE_EXPENSE_FAILURE' });
+    }
+  };
+  
+  
+  
+  
+  export const fetchSavings = () => async (dispatch) => {
+    try {
+      
+      const response = await fetch(
+        'https://expense-tracker.vinlarose.repl.co/savings'
+      );
+      const data = await response.json();
+      console.log(data);
+      dispatch({ type: 'FETCH_SAVING_SUCCESS', payload: data });
+    } catch (error) {
+      console.error('Error fetching expense data:', error);
+      dispatch({ type: 'FETCH_SAVING_FAILURE' }); 
+    }
+  };
+
+  export const addSaving = (savingData) => async (dispatch) => {
+    try {
+   
+      console.log(savingData)
+  
+      const response = await fetch('https://expense-tracker.vinlarose.repl.co/savings', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(savingData),
+      });
+  
+      if (!response.ok) {
+        // Handle non-successful response (e.g., status code 4xx or 5xx)
+        throw new Error('Failed to add saving');
+      }
+  
+      const addedsaving = await response.json();
+      console.log(addedsaving.data)
+      dispatch({ type: 'ADD_SAVING_SUCCESS', payload: addedsaving.data });
+    } catch (error) {
+      console.error('Error adding saving:', error);
+      dispatch({ type: 'ADD_SAVING_FAILURE' });
+    }
+  };
+  
+  export const deleteSavings = (savingId) => async (dispatch) => {
+    try {
+   
+      console.log(savingId);
+  
+      const response = await fetch(`https://expense-tracker.vinlarose.repl.co/savings/${savingId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+  
+      if (!response.ok) {
+        
+        throw new Error('Failed to delete saving');
+      }
+  
+      const deletedsaving = await response.json();
+      console.log(deletedsaving.data);
+      dispatch({ type: 'DELETE_SAVING_SUCCESS', payload: deletedsaving.data });
+    } catch (error) {
+      console.error('Error deleting saving:', error);
+      dispatch({ type: 'DELETE_SAVING_FAILURE' });
     }
   };
   

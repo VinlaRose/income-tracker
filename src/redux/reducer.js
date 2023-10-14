@@ -112,6 +112,57 @@ const initialState = {
                       loading: false,
                       error: 'Error deleting expenses',
                     };
+                    
+                    
+                    
+                    
+    
+            case 'FETCH_SAVING_SUCCESS':
+                return {
+                  ...state,
+                  savings: action.payload,
+                  loading: false,
+                  error: null,
+                };
+          
+              case 'FETCH_SAVING_FAILURE':
+                return {
+                  ...state,
+                  loading: false,
+                  error: 'Error fetching savings data',
+                };
+          
+              case 'ADD_SAVING_SUCCESS':
+                return {
+                  ...state,
+                  savings: [...state.savings, action.payload],
+                  loading: false,
+                  error: null,
+                };
+          
+              case 'ADD_SAVING_FAILURE':
+                return {
+                  ...state,
+                  loading: false,
+                  error: 'Error adding savings',
+                };
+                
+                case 'DELETE_SAVING_SUCCESS':
+                    
+                    const updateSavings = state.savings.filter((savings) => savings._id !== action.payload._id);
+                    return {
+                      ...state,
+                      savings: updateSavings,
+                      loading: false,
+                      error: null,
+                    };
+              
+                  case 'DELETE_SAVING_FAILURE':
+                    return {
+                      ...state,
+                      loading: false,
+                      error: 'Error deleting savings',
+                    };
           
       default:
         return state;

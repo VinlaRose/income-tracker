@@ -19,7 +19,7 @@ function Expense() {
   return (
     <div>
       <h1>Expenses</h1>
-      <InputForm/>
+      <InputForm expense={true}/>
       <table>
         <thead>
           <tr>
@@ -38,7 +38,7 @@ function Expense() {
               
               <td>{item.description}</td>
               <td>{item.amount}</td>
-              <td>{item.category}</td>
+              <td>{item.type}</td>
               <td>{item.createdAt}</td>
               <td><button onClick={() => deleteHandler(item._id)}>DELETE</button></td>
               
