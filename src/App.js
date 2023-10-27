@@ -6,8 +6,18 @@ import Expense from './Page/Expense';
 import Savings from './Page/Savings';
 import { Report } from './Page/Report';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchExpense, fetchIncome, fetchSavings } from './redux/actions';
 
 function App() {
+const dispatch = useDispatch();
+
+  useEffect(() => {
+    fetchExpense();
+    fetchIncome();
+    fetchSavings();
+  },[dispatch])
   return (
     <div className="App">
       
