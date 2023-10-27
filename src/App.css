@@ -124,3 +124,35 @@ table {
     background-color: #884A39;
   }
   
+  .box {
+    
+    height: 150px;
+    width: 150px;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 20px;
+    background-color: #f8c47ae7;
+  }
+  
+  .data {
+    color: #C38154;
+  }
+  
+  .heading {
+    font-size: 18px;
+    margin: 0;
+  }
+  
+  h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #884A39;
+  }
+
+  .container{
+    display: flex;
+  }
+  

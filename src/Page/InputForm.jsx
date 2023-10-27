@@ -15,7 +15,6 @@ function InputForm({income, expense, saving}) {
     e.preventDefault();
     
     if (!description || !amount) {
-      // Handle validation or show an error message
       return;
     }
 
