@@ -14,10 +14,11 @@ function App() {
 const dispatch = useDispatch();
 
   useEffect(() => {
-    fetchExpense();
-    fetchIncome();
-    fetchSavings();
+    dispatch(fetchExpense());
+    dispatch(fetchIncome());
+    dispatch(fetchSavings());
   },[dispatch])
+
   return (
     <div className="App">
       
